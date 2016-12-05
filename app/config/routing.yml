@@ -1,0 +1,3 @@
+_blog:
+  resource: "@BlogBundle/Controller/"
+  type: annotation

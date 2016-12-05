@@ -1,0 +1,32 @@
+{
+  "name": "scaytrase/symfony-sample",
+  "description": "Sample APP for learning",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pavel Batanov",
+      "email": "pavel@batanov.me"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ScayTrase\\Symfony\\Sample\\Kernel\\": "app/",
+      "ScayTrase\\Symfony\\Sample\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "symfony/symfony": "~3.2",
+    "doctrine/orm": "~2.5",
+    "doctrine/doctrine-bundle": "~1.6",
+    "sensio/framework-extra-bundle": "~3.0",
+    "ramsey/uuid": "~3.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.7"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
