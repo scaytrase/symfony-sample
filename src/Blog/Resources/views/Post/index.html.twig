@@ -1,1 +1,12 @@
 {% extends 'BlogBundle::base.html.twig' %}
+
+{% block body %}
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{ path('blog_show_by_slug', {'slug': post.slug}) }}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

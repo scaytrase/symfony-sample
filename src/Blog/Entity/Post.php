@@ -4,11 +4,13 @@ namespace ScayTrase\Symfony\Sample\Blog\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
+ * @UniqueEntity(fields={"slug"})
  */
 class Post
 {
@@ -48,7 +50,16 @@ class Post
     private $body = '';
 
     /**
+     * @var string
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string")
+     */
+    private $slug = 'unique_slug';
+
+    /**
      * Post constructor.
+     *
+     * @param UserInterface $author
      */
     public function __construct(UserInterface $author)
     {
@@ -119,5 +130,21 @@ class Post
     public function setBody(string $body)
     {
         $this->body = $body;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
     }
 }

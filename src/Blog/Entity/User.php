@@ -3,6 +3,7 @@
 namespace ScayTrase\Symfony\Sample\Blog\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -14,9 +15,15 @@ class User implements UserInterface, EquatableInterface
 {
     /**
      * @var string
+     * @ORM\Id()
+     * @ORM\Column(type="guid")
+     */
+    private $id;
+
+    /**
+     * @var string
      * @Assert\NotBlank()
      * @Assert\Length(min="3")
-     * @ORM\Id()
      * @ORM\Column(type="string")
      */
     private $username = '';
@@ -40,6 +47,22 @@ class User implements UserInterface, EquatableInterface
      * @ORM\Column(type="string")
      */
     private $nickname = '';
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->id = Uuid::uuid4();
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /** {@inheritdoc} */
     public function isEqualTo(UserInterface $user)
@@ -123,5 +146,10 @@ class User implements UserInterface, EquatableInterface
     public function setNickname(string $nickname)
     {
         $this->nickname = $nickname;
+    }
+
+    public function __toString()
+    {
+        return $this->nickname;
     }
 }

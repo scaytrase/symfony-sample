@@ -4,8 +4,33 @@ imports:
 
 framework:
   secret: "%secret%"
+  translator: ~
+  validation:
+    enable_annotations: true
+  form: ~
   router:
     resource: "%kernel.root_dir%/config/routing.yml"
   templating:
     engines:
     - twig
+  session:
+    save_path: "%kernel.root_dir%/../var/sessions"
+
+twig:
+  debug: "%kernel.debug%"
+  strict_variables: "%kernel.debug%"
+  form_themes:
+    - bootstrap_3_layout.html.twig
+
+doctrine:
+  dbal:
+    driver: pdo_sqlite
+    path: "%kernel.root_dir%/../var/database.sqlite"
+  orm:
+    auto_generate_proxy_classes: "%kernel.debug%"
+    auto_mapping: true
+    resolve_target_entities:
+        Symfony\Component\Security\Core\User\UserInterface: ScayTrase\Symfony\Sample\Blog\Entity\User
+
+assetic:
+  use_controller: true

@@ -1,3 +1,15 @@
+login_check:
+  path: /login/check
+
+logout:
+  path: /logout
+
 _blog:
   resource: "@BlogBundle/Controller/"
   type: annotation
+
+blog_show_by_slug:
+  path: /{slug}/
+  defaults:
+    _controller: "BlogBundle:Post:show"
+

@@ -1,2 +1,10 @@
 imports:
   - {resource: config.yml}
+
+framework:
+  test: ~
+
+doctrine:
+  dbal:
+    driver: pdo_sqlite
+    path: "%kernel.root_dir%/../var/test.sqlite"

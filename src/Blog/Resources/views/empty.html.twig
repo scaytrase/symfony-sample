@@ -4,42 +4,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block head %}
-        <title>{% block title %}Test{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets './../vendor/bower-asset/bootstrap/dist/css/bootstrap.css' %}
             <link href="{{ asset_url }}" rel="stylesheet">
             {% endstylesheets %}
-            {% stylesheets '@BlogBundle/Resources/public/css/blog.css' %}
+            {% stylesheets '@BlogBundle/Resources/public/css/signin.css' %}
             <link href="{{ asset_url }}" rel="stylesheet">
             {% endstylesheets %}
         {% endblock %}
     {% endblock %}
 </head>
 <body>
-<div class="blog-masthead">
-    <div class="container">
-        <nav class="blog-nav">
-            <a class="blog-nav-item active" href="{{ path('index') }}">Home</a>
-        </nav>
-    </div>
-</div>
-<div class="container">
-    <div class="blog-header">
-        <h1 class="blog-title">Test blog</h1>
-    </div>
+{% block body %}
+{% endblock %}
 
-    <div class="row">
-        <div class="col-sm-8 blog-main">
-            {% block body %}
-            {% endblock %}
-        </div>
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-            {#<div class="sidebar-module sidebar-module-inset"></div>#}
-            <div class="sidebar-module"></div>
-            <div class="sidebar-module"></div>
-        </div><!-- /.blog-sidebar -->
-    </div>
-</div>
 {% block javascripts %}
     {% javascripts './../vendor/bower-asset/jquery/dist/jquery.js' %}
     <script src="{{ asset_url }}"></script>
